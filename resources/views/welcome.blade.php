@@ -34,15 +34,15 @@
         </div>  
         <div class="slideshow-container">
             <div class="mySlides fade">
-                <div class="text">make yourself PROUD</div>
+                <div class="text">make yourself <b>PROUD</b></div>
             </div>
 
             <div class="mySlides fade">
-                <div class="text">your potential to succeed is INFINITE</div>
+                <div class="text">your potential to succeed is <b>INFINITE</b></div>
             </div>
 
             <div class="mySlides fade">
-                <div class="text">you will never always be motivated, so you must learn to always be DISCIPLINED</div>
+                <div class="text">you will never always be motivated, so you must learn to always be <b>DISCIPLINED</b></div>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -54,33 +54,53 @@
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
         </div>  
+        <div class="main">
+            <h2>Services</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="pic_container"><img src="{{asset('images/pic1.png')}}" alt="Pic 1" height="120" class="pic"></div>
+                    <h3>Habbit Tracker</h3>
+                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                </div>
+                <div class="column">
+                    <div class="pic_container"><img src="{{asset('images/pic2.png')}}" alt="Pic 1" height="100" class="pic"></div>
+                    <h3>Progress Tracking</h3>
+                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                </div>
+                <div class="column">
+                    <div class="pic_container"><img src="{{asset('images/pic3.png')}}" alt="Pic 1" height="100" class="pic"></div>
+                    <h3>Customization Options</h3>
+                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
-let slideIndex = 1;
-showSlides(slideIndex);
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
 </script>
 </html>
