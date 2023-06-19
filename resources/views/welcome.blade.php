@@ -15,7 +15,7 @@
             <img src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
             <nav class="navbar">
                 <a href="#services">Services</a>
-                <a href="#motivation">Motivation</a>
+                <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
                 <a href="#sign_up">Sign Up</a>
                 <a href="#sign_in">Sign In</a>
             </nav>
