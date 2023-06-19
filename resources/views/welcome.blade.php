@@ -14,7 +14,7 @@
         <header>
             <img src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
             <nav class="navbar">
-                <a href="#about">About</a>
+                <a href="#services">Services</a>
                 <a href="#motivation">Motivation</a>
                 <a href="#sign_up">Sign Up</a>
                 <a href="#sign_in">Sign In</a>
@@ -61,27 +61,32 @@
             <span class="dot" onclick="currentSlide(3)"></span> 
         </div>  
         <div class="main">
-            <h2>Services</h2>
+            <h2 id="services">Services</h2>
             <div class="row">
                 <div class="column">
                     <div class="pic_container"><img src="{{asset('images/pic1.png')}}" alt="Pic 1" height="120" class="pic"></div>
                     <h3>Habbit Tracker</h3>
-                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                    <p>
+                        Track your habits effortlessly with our intuitive interface. Simply set your goals,
+                        input your progress, and watch your daily accomplishments come to life.
+                    </p>
                 </div>
                 <div class="column">
                     <div class="pic_container"><img src="{{asset('images/pic2.png')}}" alt="Pic 1" height="100" class="pic"></div>
                     <h3>Progress Tracking</h3>
-                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                    <p>
+                        Visualize your progress through insightful charts and graphs, empowering you to stay motivated and focused.
+                    </p>
                 </div>
                 <div class="column">
                     <div class="pic_container"><img src="{{asset('images/pic3.png')}}" alt="Pic 1" height="100" class="pic"></div>
                     <h3>Customization Options</h3>
-                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
+                    <p>
+                        Tailor your habit-tracking experience to suit your unique needs. Our flexible platform allows you to create 
+                        personalized habit plans, enabling you to target specific areas of your life that you wish to improve.
+                    </p>
                 </div>
-            </div>
-            <div class="btnBox">
-                <button class="btn">Learn more</btton>
-            </div>   
+            </div> 
             <h2>Reach your goals</h2>  
         </div>
         <footer> <p class="footer">Amanda Pāne 2023</p></footer>
@@ -113,5 +118,5 @@
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
         }
-</script>
+     </script>
 </html>

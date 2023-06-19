@@ -3,10 +3,7 @@ body
     background-color:rgb(240, 240, 234);
     font-family: 'Montserrat';
 }
-header
-{
-    margin: 0% 10% 0 10%;
-}
+header{margin: 0% 10% 0 10%;}
 nav
 {
     overflow: hidden;
@@ -25,15 +22,10 @@ nav
     cursor: pointer;
     text-decoration: none;
 }
-.navbar a:hover
-{
-    color: rgb(139, 121, 85);
-}
-.main
-{
-    margin: 0% 10% 0 10%;
-    text-align: justify;
-}
+.navbar a:hover{color: rgb(139, 121, 85);}
+
+.main{margin: 0% 10% 0 10%;}
+
 h1, h2, h3
 {
     color: rgb(46,55,49);
@@ -49,15 +41,9 @@ h1,h2
     padding-top: 30px;
 }
 
-h3
-{
-    font-weight: bolder;
-}
+h3{font-weight: bolder;}
 
-p
-{
-    text-align: center;
-}
+p{text-align:center;}
 
 .about, .about2
 {
@@ -97,10 +83,7 @@ p.about2
     transform: translate(-50%,-50%);
     margin: 0;
 }
-.btn:hover
-{
-    background-color: rgba(77, 93, 83, 0.8);
-}
+.btn:hover{background-color: rgba(77, 93, 83, 0.8);}
 
 .slideshow-container 
 {
@@ -176,8 +159,9 @@ p.about2
 {
     float: left;
     width: 25%;
-    padding: 0px 49px 0px 49px;
+    padding: 0px 49px 150px 49px;
     height: 250px; 
+    text-align: justify;
 }
 
 .row:after 
