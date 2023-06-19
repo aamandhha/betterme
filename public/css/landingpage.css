@@ -36,6 +36,7 @@ nav
 }
 h1
 {
+    color: rgb(46,55,49);
     text-align: center;
     font-weight: lighter;
 }
@@ -44,4 +45,98 @@ h1
     width: 50%;
     text-align: center;
     margin-left: 25%;
+    font-size: 1.3vw;
 }
+.btnBox
+{
+    position: relative;
+    height: 70px; 
+}
+.btn
+{
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Montserrat';
+    padding: 10px 30px;
+    font-size: 1.25vw;
+    background-color: rgb(77, 93, 83);
+    border:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    margin: 0;
+}
+
+.slideshow-container 
+{
+    position: relative;
+    margin-top:100px;
+    background-color: rgb(46,55,49);
+    height:300px;
+}
+  
+.prev, .next 
+{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+  
+.next 
+{
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+.text 
+{
+    color: white;
+    font-size: 2vw;
+    position: absolute;
+    width: 40%;
+    text-align: center;
+    top: 50%;
+    left:50%;
+    -ms-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+}
+  
+.dot 
+{
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(77, 93, 83,0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+.active, .dot:hover { background-color: rgba(77, 93, 83,0.8);}
+
+.fade 
+{
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@keyframes fade 
+{
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+  
+ @media only screen and (max-width: 300px) {.prev, .next,.text {font-size: 11px}}
