@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotivationController;
+use App\Http\Controllers\LandingPageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,7 @@ Route::get('/', function () {
 
 Route::resource('motivation', MotivationController::class);
 Route::get('/motivation', [MotivationController::class,'index']);
+
+Route::resource('welcome', LandingPageController::class);
+Route::get('/welcome', [LandingPageController::class,'index']);
+
