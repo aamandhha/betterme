@@ -23,10 +23,16 @@
         <div class="main">
             <h1>About BetterMe</h1>
             <p class="about">
-                I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or 
-                double click me to add your own content and make changes to the font. Feel free to drag and drop me 
-                anywhere you like on your page. I’m a great place for you to tell a story and let your users know a 
-                little more about you.
+                Embrace positive change and unleash your true potential with our innovative platform designed to help you build and maintain 
+                healthy habits. Whether you're aiming to adopt a new fitness routine, improve your productivity, or enhance your overall well-being, 
+                our habit tracker has got you covered.
+            </p>
+            <p class="about">
+                Don't let your goals remain distant dreams. Take charge of your life and embark on a transformative journey. Embrace positive change, 
+                cultivate lasting habits, and unlock the best version of yourself.
+            </p>
+            <p class="about2">
+                <b>Start tracking your way to success today!</b>
             </p>
             <div class="btnBox">
                 <button class="btn">Sign up</btton>
@@ -73,7 +79,12 @@
                     <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy.</p>
                 </div>
             </div>
+            <div class="btnBox">
+                <button class="btn">Learn more</btton>
+            </div>   
+            <h2>Reach your goals</h2>  
         </div>
+        <footer> <p class="footer">Amanda Pāne 2023</p></footer>
     </body>
     <script>
         let slideIndex = 1;

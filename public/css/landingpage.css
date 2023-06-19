@@ -31,7 +31,7 @@ nav
 }
 .main
 {
-    margin: 5% 10% 0 10%;
+    margin: 0% 10% 0 10%;
     text-align: justify;
 }
 h1, h2, h3
@@ -39,12 +39,14 @@ h1, h2, h3
     color: rgb(46,55,49);
     text-align: center;
     font-weight: lighter;
+    text-transform: capitalize;
 }
 
 h1,h2
 {
     font-size: 35px;
     padding-bottom: 50px;
+    padding-top: 30px;
 }
 
 h3
@@ -52,17 +54,31 @@ h3
     font-weight: bolder;
 }
 
-.about
+p
+{
+    text-align: center;
+}
+
+.about, .about2
 {
     width: 50%;
     text-align: center;
     margin-left: 25%;
     font-size: 1.3vw;
 }
+
+p.about2
+{
+    font-size: 1.5vw;
+    margin-top:40px;
+}
+
+
 .btnBox
 {
     position: relative;
     height: 70px; 
+    margin-top: 70px;
 }
 .btn
 {
@@ -89,7 +105,7 @@ h3
 .slideshow-container 
 {
     position: relative;
-    margin-top:100px;
+    margin-top:70px;
     background-color: rgb(46,55,49);
     height:300px;
 }
@@ -160,11 +176,10 @@ h3
 {
     float: left;
     width: 25%;
-    padding: 0px 49px;
+    padding: 0px 49px 0px 49px;
     height: 250px; 
-
 }
-  
+
 .row:after 
 {
     content: "";
@@ -184,5 +199,22 @@ h3
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%,-50%);
-  
 }
+footer
+{
+    height: 100px;
+    background-color: rgb(46,55,49);
+    position: relative;
+}
+.footer
+{
+    color: rgb(240, 240, 234);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    margin: 0;
+}
+
