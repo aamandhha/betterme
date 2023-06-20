@@ -2,8 +2,18 @@ body
 {
     background-color:rgb(240, 240, 234);
     font-family: 'Montserrat';
+    margin: 0;
 }
 header{margin: 0% 10% 0 10%;}
+
+#img-link, #img-link img{
+    text-decoration: none !important;
+    border:0px !important;
+    outline:none;
+    border-width: 0px;
+    outline-width:0px;
+    border-bottom: none;
+ }
 nav
 {
     overflow: hidden;
@@ -24,7 +34,7 @@ nav
 }
 .navbar a:hover{color: rgb(139, 121, 85);}
 
-.main{margin: 0% 10% 0 10%;}
+.main, .motivation{margin: 0% 10% 0 10%;}
 
 h1, h2, h3
 {
@@ -159,7 +169,7 @@ p.about2
 {
     float: left;
     width: 25%;
-    padding: 0px 49px 150px 49px;
+    padding: 0px 49px 100px 49px;
     height: 250px; 
     text-align: justify;
 }
@@ -202,3 +212,19 @@ footer
     margin: 0;
 }
 
+.motivation p, .list
+{
+    text-align: left;
+    font-size: 1.3vw;
+}
+
+.motivation{padding-bottom: 70px;}
+hr
+{
+    height: 3px;
+    width: 100%;
+    background-color: rgb(46,55,49);
+    border: none;
+    margin: 50px 0px;
+}
+li{margin-bottom: 20px;}

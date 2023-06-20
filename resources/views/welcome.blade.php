@@ -12,8 +12,8 @@
     </head>
     <body>
         <header>
-            <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">
-                <img src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
+            <a id="img-link" href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">
+                <img id="img-link" src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
             </a>
             <nav class="navbar">
                 <a href="#services">Services</a>
