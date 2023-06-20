@@ -17,9 +17,9 @@
             </a>
             <nav class="navbar">
                 <a href="#services">Services</a>
-                <a href="#motivation">Motivation</a>
-                <a href="#sign_up">Sign Up</a>
-                <a href="#sign_in">Sign In</a>
+                <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
+                <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
+                <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
             </nav>
         </header>
         <div class="motivation">

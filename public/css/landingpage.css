@@ -47,13 +47,15 @@ h1, h2, h3
 h1,h2
 {
     font-size: 35px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     padding-top: 30px;
 }
 
 h3{font-weight: bolder;}
 
-p{text-align:center;}
+p{text-align:center; font-size: 1.3vw;}
+
+.link{text-decoration: none; color: rgb(240, 240, 234);}
 
 .about, .about2
 {
@@ -228,3 +230,56 @@ hr
     margin: 50px 0px;
 }
 li{margin-bottom: 20px;}
+
+.container {
+    width: 50%;
+    height: 70vw;
+    margin-top: 50px;
+    margin-left: 25%;
+    background-color: rgba(77, 93, 83, 0.5);
+    border-radius: 15px;
+    position: relative;
+}
+
+.container-login {
+    width: 50%;
+    height: 45vw;
+    margin-top: 50px;
+    margin-left: 25%;
+    background-color: rgba(77, 93, 83, 0.5);
+    border-radius: 15px;
+    position: relative;
+  }
+  
+.fields
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    margin: 0;
+}
+  
+
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: rgb(240, 240, 234);
+    border-radius: 15px;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    text-align: center;
+  }
