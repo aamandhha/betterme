@@ -18,12 +18,11 @@
             <nav class="navbar">
                 <a href="#services">Services</a>
                 <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
-                <a href="#sign_up">Sign Up</a>
-                <a href="#sign_in">Sign In</a>
+                <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
             </nav>
         </header>
         <form action="/action_page.php">
-            <div class="container-login">
+            <div class="container">
                 <h1>Sign In</h1>
                 <p>Enter your credentials to sign in.</p>
 

@@ -231,46 +231,32 @@ hr
 }
 li{margin-bottom: 20px;}
 
-.container {
+.container 
+{
     width: 50%;
-    height: 70vw;
-    margin-top: 50px;
     margin-left: 25%;
-    background-color: rgba(77, 93, 83, 0.5);
+    margin-top: 50px;
     border-radius: 15px;
-    position: relative;
+    background-color: rgba(77, 93, 83, 0.5);
 }
 
-.container-login {
-    width: 50%;
-    height: 45vw;
-    margin-top: 50px;
-    margin-left: 25%;
-    background-color: rgba(77, 93, 83, 0.5);
-    border-radius: 15px;
-    position: relative;
-  }
-  
-.fields
+.fields 
 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%,-50%);
-    margin: 0;
+    width: 60%;
+    margin-left: 20%;
+    padding-top: 25px;
 }
-  
 
   /* Full-width input fields */
   input[type=text], input[type=password] {
-    width: 100%;
+    width: 93%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
     background: rgb(240, 240, 234);
     border-radius: 15px;
+    align-self: center;
   }
   
   input[type=text]:focus, input[type=password]:focus {
