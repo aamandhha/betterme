@@ -24,7 +24,7 @@ nav
 {
     float: left;
     font-size: 16px;
-    color: black;
+    color: black; 
     text-align: center;
     text-transform: uppercase;
     font-weight: bolder;
@@ -286,7 +286,7 @@ th, td, tr
 
 td{padding: 3px;}
 
-.container {
+.container2 {
     position: relative;
     padding-left: 25px;
     margin-bottom: 5px;
@@ -298,7 +298,7 @@ td{padding: 3px;}
     user-select: none;
   }
   
-  .container input {
+  .container2 input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -317,11 +317,11 @@ td{padding: 3px;}
     box-shadow: 20px 20px 0px 25px rgb(240, 240, 234);
   }
   
-  .container:hover input ~ .checkmark {
+  .container2:hover input ~ .checkmark {
     background-color: rgb(133, 144, 137);
   }
   
-  .container input:checked ~ .checkmark {
+  .container2 input:checked ~ .checkmark {
     background-color: rgb(77, 93, 83);
   }
   
@@ -357,10 +357,15 @@ td{padding: 3px;}
   }
   
   input[type="number"] {
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: rgb(133, 144, 137);
+    border-radius: 15px;
+    border: 0.5px solid rgb(77, 93, 83);
+    width: 150px;
+    height: 22px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    align-items: center;
+
   }
 /* aplis */
   .box {
@@ -455,7 +460,7 @@ select {
     border-radius: 15px;
     border: 0.5px solid rgb(77, 93, 83);
     width: 150px;
-    height: 13px;
+    height: 22px;
     color:white;
     margin-left: 20px;
 }

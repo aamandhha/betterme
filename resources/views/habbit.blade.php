@@ -61,7 +61,7 @@
                         document.write('<th>' + habits[i] + '</th>');
                         
                         for (var j = 0; j < 31; j++) {
-                            document.write('<td><label class="container"><input type="checkbox"> <span class="checkmark"></span></label></td>');
+                            document.write('<td><label class="container2"><input type="checkbox"> <span class="checkmark"></span></label></td>');
                         }
                             
                         document.write('</tr>');
