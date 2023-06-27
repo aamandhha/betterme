@@ -21,6 +21,7 @@
                 <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
                 <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
                 <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
+                <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
             </nav>
         </header>
         <div class="habbits">

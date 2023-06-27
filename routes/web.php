@@ -6,6 +6,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HabbitsController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -26,3 +27,6 @@ Route::get('/login', [LoginController::class,'index']);
 
 Route::resource('habbit', HabbitsController::class);
 Route::get('/habbit', [HabbitsController::class,'index']);
+
+Route::resource('profile', ProfileController::class);
+Route::get('/profile', [ProfileController::class,'index']);

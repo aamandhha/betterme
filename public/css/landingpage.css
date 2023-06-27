@@ -34,7 +34,7 @@ nav
 }
 .navbar a:hover{color: rgb(139, 121, 85);}
 
-.main, .motivation, .habbits{margin: 0% 10% 0 10%;}
+.main, .motivation, .habbits, .profile{margin: 0% 10% 0 10%;}
 
 h1, h2, h3
 {
@@ -482,4 +482,67 @@ select {
     background-color: rgba(77, 93, 83, 0.8);
   }
 
+  .container-profile, .profile-picture-container, .profile-info {
+    display: flex;
+  }
+
+  .left-column {
+    flex: 1;
+    width: 30%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+  }
+  
+  .btn-ppic, .update-btn {
+    margin-top: 20px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: rgb(240, 240, 234);
+    font-family: 'Montserrat';
+    padding: 5px 10px;
+    font-size: 0.8vw;
+    background-color: rgb(77, 93, 83);
+    border: none;
+  }
+  .update-btn{margin:5px;}
+  
+  .btn-ppic:hover,.update-btn:hover {
+    background-color: rgba(77, 93, 83, 0.8);
+  }
+  
+  .right-column {
+    flex: 2;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid blue;
+    display: flex; 
+    flex-direction: column; 
+  }
+  
+  .left-column-info {
+    flex: 1;
+    width: 20%; 
+    padding: 10px;
+    float: left;
+    border: 1px solid red;
+  }
+  
+  .right-column-info {
+    flex: 2;
+    width: 80%; 
+    padding: 10px;
+    float: left;
+    border: 1px solid blue;
+  }
+  .update-btns{
+    border: 1px solid pink; 
+    width: fit-content; 
+    float: right;
+  }
+  
+  
   
