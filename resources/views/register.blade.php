@@ -9,6 +9,8 @@
 		<link href="{{asset('css/landingpage.css')}}" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
+        <script src="{{asset('js/registerValidation.js')}}"></script>
+
     </head>
     <body>
         <header>
@@ -29,18 +31,22 @@
                 <div class="fields">
                     <label for="fullname"><b>Full Name</b></label>
                     <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required>
+                    <span class="error"></span><br>
 
                     <label for="username"><b>Username</b></label>
                     <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                    <span class="error"></span><br>
 
                     <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                    <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                    <span class="error"></span><br>
 
                     <label for="psw_repeat"><b>Repeat Password</b></label>
                     <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw_repeat" required>
+                    <span class="error"></span><br>
 
                     <p>By creating an account you agree to our Terms & Privacy.</p>
                     <div class="btnBox"><button type="submit" class="btn">Register</button></div>

@@ -12,7 +12,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('register');
+        $errorMsg = "";
+        return view('register', compact('errorMsg'));
     }
 
     /**
@@ -33,8 +34,6 @@ class RegisterController extends Controller
         $user->Username = $request->username;
         $user->Email = $request->email;
         $user->Password = $request->psw;
-
-        $passCheck = $request->psw_repeat;
 
         $user->save();
 

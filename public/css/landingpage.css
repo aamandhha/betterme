@@ -248,7 +248,7 @@ li{margin-bottom: 20px;}
 }
 
   /* Full-width input fields */
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], input[type=email] {
     width: 93%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -259,7 +259,7 @@ li{margin-bottom: 20px;}
     align-self: center;
   }
   
-  input[type=text]:focus, input[type=password]:focus {
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
     background-color: #ddd;
     outline: none;
   }
@@ -544,5 +544,7 @@ select {
     float: right;
   }
   
-  
+  .error{
+    color: pink;
+  }
   
