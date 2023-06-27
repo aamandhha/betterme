@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,20 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->FullName = $request->fullname;
+        $user->Username = $request->username;
+        $user->Email = $request->email;
+        $user->Password = $request->psw;
+
+        $passCheck = $request->psw_repeat;
+
+        $user->save();
+
+        #to perform a redirect back, we need country code from ID
+        #$country = Country::findOrFail($request->country_id);
+
+        return view('login');
     }
 
     /**

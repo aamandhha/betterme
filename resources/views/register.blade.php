@@ -21,7 +21,8 @@
                 <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
             </nav>
         </header>
-        <form action="/action_page.php">
+        <form method="POST" action="{{ action([App\Http\Controllers\RegisterController::class, 'store']) }}">
+            @csrf
             <div class="container">
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
@@ -38,8 +39,8 @@
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                    <label for="psw_repeat"><b>Repeat Password</b></label>
+                    <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw_repeat" required>
 
                     <p>By creating an account you agree to our Terms & Privacy.</p>
                     <div class="btnBox"><button type="submit" class="btn">Register</button></div>
