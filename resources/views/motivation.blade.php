@@ -20,6 +20,7 @@
                 <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
                 <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
                 <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
             </nav>
         </header>
         <div class="motivation">
