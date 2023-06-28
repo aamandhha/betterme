@@ -10,7 +10,11 @@ use Illuminate\Database\Eloquent\Model;
         use HasFactory;
 
         public $timestamps = false;
+
+        protected $primaryKey = 'User_ID';
+
         protected $fillable = [
+            'User_ID',
             'FullName',
             'Username',
             'Email',

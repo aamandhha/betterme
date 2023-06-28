@@ -36,30 +36,41 @@
             </nav>
         </header>
         <div class="profile">
-            <h1> Profile </h1>
+            <h1> Profile editing </h1>
             <div class="container-profile">
                 <div class="left-column">
                     <div class="profile-picture-container">
                         <img src="{{$fullUser->Avatar}}" alt="Profile picture" height="270" class="profile-picture">
                      </div>
+                     <button class="btn-ppic">Change photo</button>
                 </div>
                 <div class="right-column">
                     <div class="profile-info">
-                        <form>
-                            <label for="info_name_input" class="info-name-label">Your full name:</label>
-                            <input type="text" disabled="disabled" id="info_name_input" name="info_name_input" value="{{$fullUser->FullName}}">
-                            <label for="info_username_input" class="info-username-label">Your username:</label>
-                            <input type="text" disabled="disabled" id="info_username_input" name="info_username_input" value="{{$fullUser->Username}}">
-                            <label for="info_email_input" class="info-email-label">Your email:</label>
-                            <input type="email" disabled="disabled" id="info_email_input" name="info_email_input" value="{{$fullUser->Email}}">
-                            <label for="info-lang-input" class="info-lang-label">Your language:</label>
-                            <input type="text" disabled="disabled" id="info-lang-input" name="name" value="{{$fullUser->Language}}">
+                        <form method="POST" action="{{ action([App\Http\Controllers\ProfileEditController::class, 'store']) }}">
+                            @csrf
+                            <label for="info_name_input" class="info-name-label">Change your full name:</label>
+                            <input type="text"  id="info_name_input" name="info_name_input" value="{{$fullUser->FullName}}">
+                            <label for="info_username_input" class="info-username-label">Change your username:</label>
+                            <input type="text"  id="info_username_input" name="info_username_input" value="{{$fullUser->Username}}">
+                            <label for="info_email_input" class="info-email-label">Change your email:</label>
+                            <input type="email"  id="info_email_input" name="info_email_input" value="{{$fullUser->Email}}">
+                            <label>Choose language:</label>
+                            <select>
+                                @if($fullUser->Language=="ENG")
+                                    <option value="ENG">ENG</option>
+                                    <option value="LV">LV</option>
+                                @else
+                                    <option value="LV">LV</option>
+                                    <option value="ENG">ENG</option>
+                                @endif
+                            </select>
+                            <div class="update-btns">
+                                <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'], ['sessionUser'=> $sessionUser])}}">
+                                    <button class="update-btn">cancel</button>
+                                </a>
+                                    <button class="update-btn" type="submit">save</button>
+                            </div>
                         </form>
-                        <div class="update-btns">
-                            <a href="{{action([App\Http\Controllers\ProfileEditController::class, 'index'], ['sessionUser'=> $sessionUser])}}">
-                                <button class="update-btn">Edit</button>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

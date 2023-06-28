@@ -577,7 +577,7 @@ select {
     gap: 10px;
   }
 
-#info-name-input, #info-username-input, #info-email-input
+#info_name_input, #info_username_input, #info_email_input, #info-lang-input
 {
   background-color: rgb(133, 144, 137); 
   border: 0.5px solid rgb(77, 93, 83);
@@ -589,7 +589,6 @@ select {
 }
   .update-btns{
     width: fit-content; 
-    align-self: flex-end;
   }
   
   .error{

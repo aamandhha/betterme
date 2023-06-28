@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\HabbitsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileEditController;
+
 
 
 Route::get('/', function () {
@@ -34,3 +36,6 @@ Route::get('{sessionUser}/habbit', [HabbitsController::class,'index']);
 
 Route::resource('profile', ProfileController::class, ['except' => ['index']]);
 Route::get('{sessionUser}/profile', [ProfileController::class,'index']);
+
+Route::resource('profile', ProfileEditController::class, ['except' => ['index']]);
+Route::get('{sessionUser}/profile/edit', [ProfileEditController::class,'index']);
