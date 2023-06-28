@@ -18,7 +18,7 @@
             </div>            
             </a>
             <nav class="navbar">
-                <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
+                 <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
                 <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
                 <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
             </nav>

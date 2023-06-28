@@ -31,6 +31,7 @@
             <div class="year">
                 <label for="year-input" class="year-label">Choose a year:</label>
                 <input type="number" placeholder="2023" id="year-input" name="year" min="2023">
+                <input id="choose" type="submit" value="Choose">
             </div>
             <div class="months">
                 <button class="month-btn">jan</button>
@@ -71,7 +72,22 @@
                     }
                 </script>
             </table>
-            <h2>goals</h2>
+            <div class="create-habbit">
+                <label for="habbit-input" class="habbit-label">New habbit:</label>
+                <input type="text"  id="habbit-input" name="habbit" >
+                <input id="create" type="submit" value="Create">
+                <form action="">
+                    <label>Choose a habbit to delete:</label>
+                    <select>
+                        <option value="">--</option>
+                        <option value="Water">Water</option>
+                        <option value="Workout">Workout</option>
+                        <option value="Walk">Walk</option>
+                    </select>
+                    <input id="delete" type="submit" value="Delete">
+                </form>
+            </div>
+            <h2 id="goals">goals</h2>
             <div class="goals">
                 <form action="">
                     <label>Choose your habbit and enter days count to create a new goal:</label>

@@ -306,6 +306,26 @@ th, td, tr
 
 td{padding: 3px;}
 
+.create-habbit
+{
+  margin-top: 50px;
+  width: 50%;
+  height: fit-content;
+  float: right;
+}
+
+#habbit-input
+{
+  background-color: rgb(133, 144, 137); 
+  border: 0.5px solid rgb(77, 93, 83);
+  width: 50%; 
+  height: 0px;
+  margin-left: 30px;
+  color: white;
+  font-weight: 600;
+}
+
+#goals{margin-top:100px;}
 .container2 {
     position: relative;
     padding-left: 25px;
@@ -381,7 +401,7 @@ td{padding: 3px;}
     border-radius: 15px;
     border: 0.5px solid rgb(77, 93, 83);
     width: 150px;
-    height: 22px;
+    height: 27px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
     align-items: center;
@@ -470,7 +490,7 @@ select {
     border-radius: 15px;
     border: 0.5px solid rgb(77, 93, 83);
     width: 150px;
-    height: 24px;
+    height: 30px;
     color:white;
     margin-left: 20px;
 }
@@ -480,13 +500,13 @@ select {
     border-radius: 15px;
     border: 0.5px solid rgb(77, 93, 83);
     width: 150px;
-    height: 22px;
+    height: 27px;
     color:white;
     margin-left: 20px;
 }
 
 
-#create {
+#create, #delete, #choose {
     border-radius: 15px;
     text-transform: uppercase;
     color: rgb(240, 240, 234);
@@ -498,7 +518,7 @@ select {
     margin-left: 20px;
   }
   
-#create:hover {
+#create:hover, #delete:hover, #choose:hover {
     background-color: rgba(77, 93, 83, 0.8);
   }
 
