@@ -26,7 +26,7 @@ Route::get('/register', [RegisterController::class,'index']);
 Route::resource('login', LoginController::class);
 Route::get('/login', [LoginController::class,'index']);
 
-Route::resource('logout', LoginController::class);
+Route::resource('logout', LogoutController::class);
 Route::post('/logout', [LogoutController::class,'store']);
 
 Route::resource('habbit', HabbitsController::class);

@@ -18,21 +18,25 @@
             </div>            
             </a>
             <nav class="navbar">
-                <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
-                <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
-                <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
-                <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
-                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
-                <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
-                
-                <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 
-                method="POST" id="logout-form" style="display: none;">@csrf</form>
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                @if($sessionUser)
+                    <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
+                    <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
+                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
+                    <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
 
+                    <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 
+                    method="POST" id="logout-form" style="display: none;">@csrf</form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                @else
+                    <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
+                    <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
+                    <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
+                    <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
+                @endif
             </nav>
         </header>
         <div class="profile">
-            <h1> Profile editing @if($sessionUser) {{$sessionUser}} @endif</h1>
+            <h1> Profile editing </h1>
             <div class="container-profile">
                 <div class="left-column">
                     <div class="profile-picture-container">

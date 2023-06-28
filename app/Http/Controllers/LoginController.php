@@ -36,7 +36,7 @@ class LoginController extends Controller
             {
                 $request->session()->put('sessionUser', $instanceUser->Username);
                 $sessionUser = session('sessionUser');
-                return view('profile', compact('sessionUser'));
+                return view('habbit', compact('sessionUser'));
             }
         }
 

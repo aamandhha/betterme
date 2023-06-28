@@ -28,7 +28,9 @@ class LogoutController extends Controller
     public function store(Request $request)
     {
         $request->session()->forget('sessionUser');
-        return view('welcome');
+
+        $sessionUser = session('sessionUser');
+        return view('welcome', compact('sessionUser'));
     }
 
     /**

@@ -11,7 +11,8 @@ class MotivationController extends Controller
      */
     public function index()
     {
-        return view('motivation');
+        $sessionUser = session('sessionUser');
+        return view('motivation', compact('sessionUser'));
     }
 
     /**

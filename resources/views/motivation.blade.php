@@ -18,13 +18,21 @@
             </div>
             </a>
             <nav class="navbar">
-                <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
-                <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
-                <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
-                <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
-                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
-                <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
+                @if($sessionUser)
+                    <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
+                    <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
+                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
+                    <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
 
+                    <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 
+                    method="POST" id="logout-form" style="display: none;">@csrf</form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                @else
+                    <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
+                    <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
+                    <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
+                    <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
+                @endif
             </nav>
         </header>
         <div class="motivation">

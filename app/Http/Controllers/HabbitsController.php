@@ -11,7 +11,8 @@ class HabbitsController extends Controller
      */
     public function index()
     {
-        return view('habbit');
+        $sessionUser = session('sessionUser');
+        return view('habbit', compact('sessionUser'));
     }
 
     /**
