@@ -13,10 +13,12 @@
     <body>
         <header>
              <a id="img-link" href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">
-                <img id="img-link" src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
+             <div class="logo-box">
+                    <img id="img-link" src="{{asset('images/logo.png')}}" alt="BetterMe Logo" height="70" class="logo">
+            </div>
             </a>
             <nav class="navbar">
-                <a href="#services">Services</a>
+                <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
                 <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
                 <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
                 <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
