@@ -94,8 +94,9 @@ p.about2
 {
     position: relative;
     height: 70px; 
-    margin-top: 70px;
+    margin-top: 50px;
 }
+
 .btn
 {
     border-radius: 15px;
