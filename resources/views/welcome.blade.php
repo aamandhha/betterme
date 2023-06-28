@@ -50,7 +50,10 @@
                 <b>Start tracking your way to success today!</b>
             </p>
             <div class="btnBox">
-                <a class = "link" href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}"><button class="btn">Sign up</btton></a>
+                @if(!$sessionUser)
+                    <a class = "link" href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}"><button class="btn">Sign up</btton></a>
+                @endif
+
             </div>      
         </div>  
         <div class="slideshow-container">
