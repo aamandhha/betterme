@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -12,7 +13,9 @@ class ProfileController extends Controller
     public function index()
     {
         $sessionUser = session('sessionUser');
-        return view('profile', compact('sessionUser'));
+        $fullUser = User::where('Username', $sessionUser)->first();
+
+        return view('profile', compact('sessionUser', 'fullUser'));
     }
 
     /**

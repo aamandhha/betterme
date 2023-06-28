@@ -46,16 +46,25 @@
                 </div>
                 <div class="right-column">
                     <div class="profile-info">
-                        <div class="left-column-info">
-                            <p>Full Name:</p>
-                            <p>Username:</p>
-                            <p>Email:</p>
-                            <p>Role:</p>
-                        </div>
-                        <div class="right-column-info">
-
+                        <form>
+                            <label for="info-name-input" class="info-name-label">Your full name:</label>
+                            <input type="text"  id="info-name-input" name="name" value="{{$fullUser->FullName}}">
+                            <label for="info-username-input" class="info-username-label">Your username:</label>
+                            <input type="text"  id="info-username-input" name="name" value="{{$fullUser->Username}}">
+                            <label for="info-email-input" class="info-email-label">Your email:</label>
+                            <input type="text"  id="info-email-input" name="name" value="{{$fullUser->Email}}">
+                            <label>Choose language:</label>
+                            <select>
+                                @if($fullUser->Language=="ENG")
+                                    <option value="ENG">ENG</option>
+                                    <option value="LV">LV</option>
+                                @else
+                                    <option value="LV">LV</option>
+                                    <option value="ENG">ENG</option>
+                                @endif
+                            </select>
+                        </form>
                         <div class="update-btns"><button class="update-btn">cancel</button><button class="update-btn">save</button></div>
-                        </div>
                     </div>
                 </div>
             </div>

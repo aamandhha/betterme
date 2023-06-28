@@ -14,7 +14,10 @@ use Illuminate\Database\Eloquent\Model;
             'FullName',
             'Username',
             'Email',
-            'Password'
+            'Password',
+            'Avatar',
+            'Status',
+            'Language'
         ];
 
         /*
