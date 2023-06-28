@@ -9,6 +9,8 @@
 		<link href="{{asset('css/landingpage.css')}}" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
+        <script src="{{asset('js/userDataValidation.js')}}"></script>
+
     </head>
     <body>
         <header>
@@ -48,14 +50,20 @@
                 </div>
                 <div class="right-column">
                     <div class="profile-info">
-                        <form method="POST" action="{{ action([App\Http\Controllers\ProfileEditController::class, 'store']) }}">
+                        <form id="editForm" method="POST" action="{{ action([App\Http\Controllers\ProfileEditController::class, 'store']) }}">
                             @csrf
                             <label for="info_name_input" class="info-name-label">Change your full name:</label>
                             <input type="text"  id="info_name_input" name="info_name_input" value="{{$fullUser->FullName}}">
+                            <span class="error"></span><br>
+
                             <label for="info_username_input" class="info-username-label">Change your username:</label>
                             <input type="text"  id="info_username_input" name="info_username_input" value="{{$fullUser->Username}}">
+                            <span class="error">@if(strlen($dublUsername) != 0) {{$dublUsername}} @endif</span><br>
+
                             <label for="info_email_input" class="info-email-label">Change your email:</label>
                             <input type="email"  id="info_email_input" name="info_email_input" value="{{$fullUser->Email}}">
+                            <span class="error">@if(strlen($dublEmail) != 0) {{$dublEmail}} @endif</span><br>
+
                             <label>Choose language:</label>
                             <select name="language">
                                 @if($fullUser->Language=="ENG")

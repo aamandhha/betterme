@@ -15,7 +15,10 @@ class ProfileEditController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
-        return view('profile_edit', compact('sessionUser', 'fullUser'));
+        $dublUsername = "";
+        $dublEmail = "";
+
+        return view('profile_edit', compact('sessionUser', 'fullUser', 'dublUsername', 'dublEmail'));
     }
 
     /**
@@ -34,12 +37,29 @@ class ProfileEditController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
+        $existingUsername = User::where('Username', $request->info_username_input)->first();
+        if($existingUsername && $existingUsername->Email != $fullUser->Email)
+        {
+            $dublUsername = "This username has already been taken!";
+            $dublEmail = "";
+            return view('profile_edit', compact('sessionUser', 'fullUser', 'dublUsername', 'dublEmail'));
+        }
+
+        $existingEmail = User::where('Email', $request->info_email_input)->first();
+        if($existingEmail && $existingEmail->Username != $fullUser->Username)
+        {
+            $dublUsername = "";
+            $dublEmail = "An account already exists for this email address!";
+            return view('profile_edit', compact('sessionUser', 'fullUser', 'dublUsername', 'dublEmail'));
+        }
+
         $fullUser->FullName = $request->info_name_input;
         $fullUser->Username = $request->info_username_input;
         $fullUser->Email = $request->info_email_input;
         $fullUser->Language = $request->language;
 
         $fullUser->save();
+
         return view('profile', compact('sessionUser', 'fullUser'));
     }
 
