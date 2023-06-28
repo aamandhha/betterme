@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -29,15 +30,17 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $allUsers = User::all();
-        foreach($allUsers as $instanceUser)
+        $hasName = User::where('Username', $request->email)->first();
+        $hasEmail = User::where('Email', $request->email)->first();
+
+        if($hasName) $instanceUser = $hasName;
+        if($hasEmail) $instanceUser = $hasEmail;
+
+        if($instanceUser && Hash::check($request->psw, $instanceUser->Password))
         {
-            if(($request->email == $instanceUser->Email || $request->email == $instanceUser->Username) && $request->psw == $instanceUser->Password)
-            {
-                $request->session()->put('sessionUser', $instanceUser->Username);
-                $sessionUser = session('sessionUser');
-                return view('habbit', compact('sessionUser'));
-            }
+            $request->session()->put('sessionUser', $instanceUser->Username);
+            $sessionUser = session('sessionUser');
+            return view('habbit', compact('sessionUser'));
         }
 
         $loginFail = "Incorrect password or email!";

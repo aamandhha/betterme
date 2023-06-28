@@ -34,32 +34,28 @@ class RegisterController extends Controller
         $user->FullName = $request->fullname;
         $user->Username = $request->username;
         $user->Email = $request->email;
-        $user->Password = $request->psw;
+        $user->Password = bcrypt($request->psw);
 
-        $allUsers = User::all();
-        foreach($allUsers as $instanceUser)
+        $existingUsername = User::where('Username', $user->Username)->first();
+        if($existingUsername)
         {
-            if($instanceUser->Username == $user->Username)
-            {
-                $dublUsername = "This username has already been taken!";
-                $dublEmail = "";
-                return view('register', compact('dublUsername', 'dublEmail'));
-            }
+            $dublUsername = "This username has already been taken!";
+            $dublEmail = "";
+            return view('register', compact('dublUsername', 'dublEmail'));
+        }
 
-            if($instanceUser->Email == $user->Email)
-            {
-                $dublUsername = "";
-                $dublEmail = "An account already exists for this email address!";
-                return view('register', compact('dublUsername', 'dublEmail'));
-            }
+        $existingEmail = User::where('Email', $user->Email)->first();
+        if($existingEmail)
+        {
+            $dublUsername = "";
+            $dublEmail = "An account already exists for this email address!";
+            return view('register', compact('dublUsername', 'dublEmail'));
         }
 
         $user->save();
 
-        #to perform a redirect back, we need country code from ID
-        #$country = Country::findOrFail($request->country_id);
-
-        return view('login');
+        $loginFail = "";
+        return view('login', compact('loginFail'));
     }
 
     /**

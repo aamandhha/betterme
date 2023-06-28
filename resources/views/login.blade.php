@@ -32,7 +32,7 @@
                 <div class="fields">
 
                     <label for="email"><b>Email/Username</b></label>
-                    <input type="email" placeholder="Enter Email or Username" name="email" id="email" required>
+                    <input type="text" placeholder="Enter Email or Username" name="email" id="email" required>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>

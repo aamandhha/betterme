@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unique('Username');
             $table->string('Email', 255);
             $table->unique('Email');
-            $table->string('Password', 45);
+            $table->string('Password', 60);
             $table->string('Avatar', 255)->default('https://i.postimg.cc/N0cRgFj7/missing-avtr.png');
             $table->string('Status', 5)->default('User');
             $table->string('Language', 3)->default('ENG');
