@@ -577,7 +577,7 @@ select {
     gap: 10px;
   }
 
-#info_name_input, #info_username_input, #info_email_input, #info-lang-input
+#info_name_input, #info_username_input, #info_email_input, #info-lang-input, #info_pic_input
 {
   background-color: rgb(133, 144, 137); 
   border: 0.5px solid rgb(77, 93, 83);

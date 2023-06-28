@@ -42,6 +42,9 @@
                     <div class="profile-picture-container">
                         <img src="{{$fullUser->Avatar}}" alt="Profile picture" height="270" class="profile-picture">
                      </div>
+                     <a href="{{action([App\Http\Controllers\AvatarEditController::class, 'index'], ['sessionUser'=> $sessionUser])}}">
+                     <button class="btn-ppic">Change photo</button>
+                    </a>
                 </div>
                 <div class="right-column">
                     <div class="profile-info">

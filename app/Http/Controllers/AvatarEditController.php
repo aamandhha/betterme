@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class ProfileEditController extends Controller
+class AvatarEditController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ProfileEditController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
-        return view('profile_edit', compact('sessionUser', 'fullUser'));
+        return view('avatar_edit', compact('sessionUser', 'fullUser'));
     }
 
     /**
@@ -34,10 +34,7 @@ class ProfileEditController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
-        $fullUser->FullName = $request->info_name_input;
-        $fullUser->Username = $request->info_username_input;
-        $fullUser->Email = $request->info_email_input;
-        $fullUser->Language = $request->language;
+        $fullUser->Avatar = $request->info_pic_input;
 
         $fullUser->save();
         return view('profile', compact('sessionUser', 'fullUser'));

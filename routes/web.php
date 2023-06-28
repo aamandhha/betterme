@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\HabbitsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileEditController;
+use App\Http\Controllers\AvatarEditController;
 
 
 
@@ -39,3 +40,6 @@ Route::get('{sessionUser}/profile', [ProfileController::class,'index']);
 
 Route::resource('profile', ProfileEditController::class, ['except' => ['index']]);
 Route::get('{sessionUser}/profile/edit', [ProfileEditController::class,'index']);
+
+Route::resource('avatar', AvatarEditController::class, ['except' => ['index']]);
+Route::get('{sessionUser}/avatar/edit', [AvatarEditController::class,'index']);

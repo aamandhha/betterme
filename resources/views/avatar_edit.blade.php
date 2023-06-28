@@ -41,10 +41,14 @@
                 <div class="left-column">
                     <div class="profile-picture-container">
                         <img src="{{$fullUser->Avatar}}" alt="Profile picture" height="270" class="profile-picture">
-                     </div>
-                     <a href="{{action([App\Http\Controllers\AvatarEditController::class, 'index'], ['sessionUser'=> $sessionUser])}}">
-                     <button class="btn-ppic">Change photo</button>
-                    </a>
+                    </div>
+                    <form method="POST" action="{{ action([App\Http\Controllers\AvatarEditController::class, 'store']) }}">
+                            @csrf
+                            <label for="info_pic_input" class="info-pic-label">Enter URL:</label>
+                            <input type="text"  id="info_pic_input" name="info_pic_input" value="{{$fullUser->Avatar}}">
+                            
+                            <button type="submit" class="btn-ppic">Change</button>
+                    </form>
                 </div>
                 <div class="right-column">
                     <div class="profile-info">
@@ -57,12 +61,12 @@
                             <label for="info_email_input" class="info-email-label">Change your email:</label>
                             <input type="email"  id="info_email_input" name="info_email_input" value="{{$fullUser->Email}}">
                             <label>Choose language:</label>
-                            <select name="language">
+                            <select>
                                 @if($fullUser->Language=="ENG")
-                                    <option value="ENG" selected>ENG</option>
+                                    <option value="ENG">ENG</option>
                                     <option value="LV">LV</option>
                                 @else
-                                    <option value="LV" selected>LV</option>
+                                    <option value="LV">LV</option>
                                     <option value="ENG">ENG</option>
                                 @endif
                             </select>
