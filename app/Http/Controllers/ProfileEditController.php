@@ -58,6 +58,9 @@ class ProfileEditController extends Controller
         $fullUser->Email = $request->info_email_input;
         $fullUser->Language = $request->language;
 
+        $request->session()->forget('sessionUser');
+        $request->session()->put('sessionUser', $fullUser->Username);
+
         $fullUser->save();
 
         return view('profile', compact('sessionUser', 'fullUser'));
