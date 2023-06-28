@@ -35,10 +35,15 @@
 
                     <label for="username"><b>Username</b></label>
                     <input type="text" placeholder="Enter Username" name="username" id="username" required>
-                    <span class="error"></span><br>
+                    <span class="error">
+                        @if(strlen($dublUsername) != 0) {{$dublUsername}} @endif
+                    </span><br>
 
                     <label for="email"><b>Email</b></label>
                     <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                    <span class="error">
+                        @if(strlen($dublEmail) != 0) {{$dublEmail}} @endif
+                    </span><br>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>

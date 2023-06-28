@@ -12,8 +12,9 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        $errorMsg = "";
-        return view('register', compact('errorMsg'));
+        $dublUsername = "";
+        $dublEmail = "";
+        return view('register', compact('dublUsername', 'dublEmail'));
     }
 
     /**
@@ -34,6 +35,24 @@ class RegisterController extends Controller
         $user->Username = $request->username;
         $user->Email = $request->email;
         $user->Password = $request->psw;
+
+        $allUsers = User::all();
+        foreach($allUsers as $instanceUser)
+        {
+            if($instanceUser->Username == $user->Username)
+            {
+                $dublUsername = "This username has already been taken!";
+                $dublEmail = "";
+                return view('register', compact('dublUsername', 'dublEmail'));
+            }
+
+            if($instanceUser->Email == $user->Email)
+            {
+                $dublUsername = "";
+                $dublEmail = "An account already exists for this email address!";
+                return view('register', compact('dublUsername', 'dublEmail'));
+            }
+        }
 
         $user->save();
 

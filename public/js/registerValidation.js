@@ -56,25 +56,34 @@ document.addEventListener('DOMContentLoaded', function()
     // Pārbauda vai parole sakrīt ar drošības prasībām un atkārtoti ievadīto paroli.
     function validatePasswords() 
     {
-      var password = passwordInput.value;
-      var repeatPassword = repeatPasswordInput.value;
-      var passwordErrorElement = passwordInput.nextElementSibling;
-      var repeatPasswordErrorElement = repeatPasswordInput.nextElementSibling;
-
-      if (password.length < 8 || repeatPassword.length < 8) 
-      {
-        passwordErrorElement.innerText = 'Passwords must be at least 8 characters long.';
-        repeatPasswordErrorElement.innerText = 'Passwords must be at least 8 characters long.';
-        return false;
-      }
-
-      if (password !== repeatPassword) 
-      {
-        repeatPasswordErrorElement.innerText = 'Passwords do not match.';
-        return false;
-      }
-
-      return true;
+        var password = passwordInput.value;
+        var repeatPassword = repeatPasswordInput.value;
+        var passwordErrorElement = passwordInput.nextElementSibling;
+        var repeatPasswordErrorElement = repeatPasswordInput.nextElementSibling;
+  
+        if (password.length < 8 || repeatPassword.length < 8) 
+        {
+          passwordErrorElement.innerText = 'Passwords should be at least 8 characters long.';
+          repeatPasswordErrorElement.innerText = 'Passwords should be at least 8 characters long.';
+          return false;
+        }
+  
+        var uppercaseRegex = /[A-Z]/;
+        var numberSymbolRegex = /[0-9!@#$%^&*()]/;
+  
+        if (!uppercaseRegex.test(password) || !numberSymbolRegex.test(password)) 
+        {
+          passwordErrorElement.innerText = 'Passwords should contain at least one uppercase letter and one number/symbol.';
+          return false;
+        }
+  
+        if (password !== repeatPassword) 
+        {
+          repeatPasswordErrorElement.innerText = 'Passwords do not match.';
+          return false;
+        }
+  
+        return true;
     }
 
     // Notīra kļūdas paziņojumus, tad kad viss ir kārtībā.
