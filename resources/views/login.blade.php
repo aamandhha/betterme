@@ -21,18 +21,21 @@
                 <a href="{{action([App\Http\Controllers\RegisterController::class, 'index'])}}">Sign Up</a>
             </nav>
         </header>
-        <form action="/action_page.php">
+        <form method="POST" action="{{ action([App\Http\Controllers\LoginController::class, 'store']) }}">
+            @csrf
             <div class="container">
                 <h1>Sign In</h1>
                 <p>Enter your credentials to sign in.</p>
 
                 <div class="fields">
 
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                    <label for="email"><b>Email/Username</b></label>
+                    <input type="email" placeholder="Enter Email or Username" name="email" id="email" required>
 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+                    <span class="error">@if(strlen($loginFail) != 0) {{$loginFail}} @endif</span><br>
 
                     <div class="btnBox"><button type="submit" class="btn">Sign In</button></div>
                 </div>

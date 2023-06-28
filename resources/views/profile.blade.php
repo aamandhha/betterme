@@ -22,10 +22,15 @@
                 <a href="{{action([App\Http\Controllers\LoginController::class, 'index'])}}">Sign In</a>
                 <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'])}}">Habbits</a>
                 <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'])}}">Profile</a>
+                
+                <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 
+                method="POST" id="logout-form" style="display: none;">@csrf</form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
             </nav>
         </header>
         <div class="profile">
-            <h1> Profile editing</h1>
+            <h1> Profile editing @if($sessionUser) {{$sessionUser}} @endif</h1>
             <div class="container-profile">
                 <div class="left-column">
                     <div class="profile-picture-container">

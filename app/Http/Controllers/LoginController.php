@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -11,7 +12,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+        $loginFail = "";
+        return view('login', compact('loginFail'));
     }
 
     /**
@@ -27,7 +29,19 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $allUsers = User::all();
+        foreach($allUsers as $instanceUser)
+        {
+            if(($request->email == $instanceUser->Email || $request->email == $instanceUser->Username) && $request->psw == $instanceUser->Password)
+            {
+                $request->session()->put('sessionUser', $instanceUser->Username);
+                $sessionUser = session('sessionUser');
+                return view('profile', compact('sessionUser'));
+            }
+        }
+
+        $loginFail = "Incorrect password or email!";
+        return view('login', compact('loginFail'));
     }
 
     /**

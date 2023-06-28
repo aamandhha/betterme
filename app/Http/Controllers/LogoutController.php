@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class LogoutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $sessionUser = session('sessionUser');
-        return view('profile', compact('sessionUser'));
+        //
     }
 
     /**
@@ -28,7 +27,8 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->session()->forget('sessionUser');
+        return view('welcome');
     }
 
     /**
