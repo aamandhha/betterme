@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
         protected $primaryKey = 'Progress_ID';
 
         protected $fillable = [
+            'Progress_ID',
             'Day_1',
             'Day_2',
             'Day_3',

@@ -58,33 +58,36 @@
             </div>
 
             <table>
-                <script>
-                    var habits = ['Water', 'Workout', 'Walk', 'Yoga', 'Vitamins', 'Skin Care', 'Reading', 'Uni Work']; // Array of habit names
-                    
-                    document.write('<tr>');
-                    document.write('<th></th>'); 
-                    
-                    for (var day = 1; day <= 31; day++) {
-                        document.write('<th>' + day + '</th>');
-                    }
-                    
-                    document.write('</tr>');
-                    for (var i = 0; i < habits.length; i++) {
-                        document.write('<tr>');
-                        document.write('<th>' + habits[i] + '</th>');
-                        
-                        for (var j = 0; j < 31; j++) {
-                            document.write('<td><label class="container2"><input type="checkbox"> <span class="checkmark"></span></label></td>');
-                        }
-                            
-                        document.write('</tr>');
-                    }
-                </script>
+                <tr>
+                    <th></th>
+                    @for($i = 1; $i <= 31; $i++)
+                        <th>{{$i}}</th>
+                    @endfor
+                </tr>
+
+                @foreach ($allHabbits as $habbit)
+                    <tr>
+                        <th>{{$habbit->HabbitName}}</th>
+
+                        @for($j = 1; $j <= 31; $j++)
+                            <td>
+                                <label class="container2"> 
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        @endfor
+                    </tr>
+                @endforeach
             </table>
+
             <div class="create-habbit">
-                <label for="habbit-input" class="habbit-label">New habbit:</label>
-                <input type="text"  id="habbit-input" name="habbit" >
-                <input id="create" type="submit" value="Create">
+                <form method="POST" action="{{ action([App\Http\Controllers\HabbitsController::class, 'store']) }}">
+                    @csrf
+                    <label for="habbit_input" class="habbit-label">New habbit:</label>
+                    <input type="text"  id="habbit_input" name="habbit_input" >
+                    <input id="create" type="submit" value="Create">
+                </form>
                 <form action="">
                     <label>Choose a habbit to delete:</label>
                     <select>

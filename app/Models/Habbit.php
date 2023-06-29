@@ -18,7 +18,8 @@ use Illuminate\Database\Eloquent\Model;
             'HabbitName',
             'Year',
             'Month',
-            'Owner_FK'
+            'Owner_FK',
+            'Progress_FK'
         ];
 
         public function progress()

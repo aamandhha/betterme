@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Progress;
+use App\Models\Habbit;
 
 class HabbitsController extends Controller
 {
@@ -12,7 +15,11 @@ class HabbitsController extends Controller
     public function index()
     {
         $sessionUser = session('sessionUser');
-        return view('habbit', compact('sessionUser'));
+        $fullUser = User::where('Username', $sessionUser)->first();
+
+        $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
+
+        return view('habbit', compact('sessionUser', 'allHabbits'));
     }
 
     /**
@@ -28,7 +35,23 @@ class HabbitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sessionUser = session('sessionUser');
+        $fullUser = User::where('Username', $sessionUser)->first();
+
+        $progress = new Progress();
+        $progress->save();
+        $latestProgress = Progress::latest('Progress_ID')->first();
+
+        $habbit = new Habbit();
+        $habbit->HabbitName = $request->habbit_input;
+        $habbit->Year = 2023;
+        $habbit->Month = 6;
+        $habbit->Owner_FK = $fullUser->User_ID;
+        $habbit->Progress_FK = $latestProgress->Progress_ID;
+        $habbit->save();
+
+        $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
+        return view('habbit', compact('sessionUser', 'allHabbits'));
     }
 
     /**
