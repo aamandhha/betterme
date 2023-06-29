@@ -32,8 +32,9 @@ Route::get('/login', [LoginController::class,'index']);
 Route::resource('logout', LogoutController::class);
 Route::post('/logout', [LogoutController::class,'store']);
 
-Route::resource('habbit', HabbitsController::class, ['except' => ['index']]);
-Route::get('{sessionUser}/habbit', [HabbitsController::class,'index']);
+Route::resource('habbit', HabbitsController::class, ['except' => ['index', 'destroy']]);
+Route::get('{sessionUser}/habbit', [HabbitsController::class, 'index'])->name('habbits.index');
+Route::delete('{sessionUser}/habbit/{habbit}', [HabbitsController::class, 'destroy'])->name('habbits.destroy');
 
 Route::resource('profile', ProfileController::class, ['except' => ['index']]);
 Route::get('{sessionUser}/profile', [ProfileController::class,'index']);

@@ -81,8 +81,16 @@ class HabbitsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $habbit = Habbit::where('Habbit_ID', $request->delHabbit)->first();
+        $habbitProgressId = $habbit->Progress_FK;
+        Habbit::findOrfail($request->delHabbit)->delete();
+        Progress::findOrfail($habbitProgressId)->delete();
+
+        $sessionUser = session('sessionUser');
+        $fullUser = User::where('Username', $sessionUser)->first();
+        $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
+        return view('habbit', compact('sessionUser', 'allHabbits'));
     }
 }

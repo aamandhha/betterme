@@ -88,17 +88,20 @@
                     <input type="text"  id="habbit_input" name="habbit_input" >
                     <input id="create" type="submit" value="Create">
                 </form>
-                <form action="">
+
+                <form method="POST" action="{{ route('habbits.destroy', ['sessionUser' => $sessionUser, 'habbit' => $habbit->Habbit_ID]) }}">
+                    @csrf
+                    @method('DELETE')
                     <label>Choose a habbit to delete:</label>
-                    <select>
-                        <option value="">--</option>
-                        <option value="Water">Water</option>
-                        <option value="Workout">Workout</option>
-                        <option value="Walk">Walk</option>
+                    <select name="delHabbit">
+                        @foreach ($allHabbits as $habbit)
+                            <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
+                        @endforeach
                     </select>
                     <input id="delete" type="submit" value="Delete">
                 </form>
             </div>
+
             <h2 id="goals">goals</h2>
             <div class="goals">
                 <form action="">
