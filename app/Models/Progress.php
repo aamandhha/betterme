@@ -44,7 +44,8 @@ use Illuminate\Database\Eloquent\Model;
             'Day_27',
             'Day_28',
             'Day_29',
-            'Day_30'
+            'Day_30',
+            'Day_31'
         ];
 
         public function habbit()

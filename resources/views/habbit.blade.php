@@ -39,7 +39,7 @@
             <h1>habbit tracker</h1>
             <div class="year">
                 <label for="year-input" class="year-label">Choose a year:</label>
-                <input type="number" placeholder="2023" id="year-input" name="year" min="2023">
+                <input type="number" value ="2023" id="year-input" name="year" min="2023">
                 <input id="choose" type="submit" value="Choose">
             </div>
             <div class="months">
@@ -57,31 +57,41 @@
                 <button class="month-btn">dec</button>
             </div>
 
-            <table>
-                <tr>
-                    <th></th>
-                    @for($i = 1; $i <= 31; $i++)
-                        <th>{{$i}}</th>
-                    @endfor
-                </tr>
-
-                @foreach ($allHabbits as $habbit)
+            <form method="POST" action="{{ route('habbits.save', ['sessionUser' => $sessionUser]) }}">
+                @csrf
+                <table>
                     <tr>
-                        <th>{{$habbit->HabbitName}}</th>
-
-                        @for($j = 1; $j <= 31; $j++)
-                            <td>
-                                <label class="container2"> 
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
+                        <th></th>
+                        @for($i = 1; $i <= 31; $i++)
+                            <th>{{$i}}</th>
                         @endfor
                     </tr>
-                @endforeach
-            </table>
+                    @php $p = 0; @endphp
+                    @foreach ($allHabbits as $habbit)
+                        <tr>
+                            <th>{{$habbit->HabbitName}}</th>
 
-            <div class="create-habbit">
+                            @for($j = 1; $j <= 31; $j++)
+                                <td>
+                                    <label class="container2">
+                                        @if($progress[$p] == 1) 
+                                            <input type="checkbox" name="habbit_check[{{$habbit->Habbit_ID}}][{{$j}}]" checked>
+                                        @else
+                                            <input type="checkbox" name="habbit_check[{{$habbit->Habbit_ID}}][{{$j}}]">
+                                        @endif
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                                @php $p++; @endphp
+                            @endfor
+                        </tr>
+                    @endforeach
+                </table>
+
+                <input class="month-btn" type="submit" value="Save">
+            </form>
+
+            <div class="create-delete-habbit">
                 <form method="POST" action="{{ action([App\Http\Controllers\HabbitsController::class, 'store']) }}">
                     @csrf
                     <label for="habbit_input" class="habbit-label">New habbit:</label>
@@ -92,7 +102,7 @@
                     <form method="POST" action="{{ route('habbits.destroy', ['sessionUser' => $sessionUser, 'habbit' => $habbit->Habbit_ID]) }}">
                         @csrf
                         @method('DELETE')
-                        <label>Choose a habbit to delete:</label>
+                        <label for="habbit_del" class="habbit-label">Choose a habbit to delete:</label>
                         <select name="delHabbit">
                             @foreach ($allHabbits as $habbit)
                                 <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
@@ -128,7 +138,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
                             <defs>
                                 <linearGradient id="GradientColor">
-                                <stop offset="0%" stop-color="rgb(41, 61, 49)" />
+                                <stop offset="0%" stop-color="rgb(99, 112, 104)" />
                                 <stop offset="100%" stop-color="rgb(99, 112, 104)" />
                                 </linearGradient>
                             </defs>
