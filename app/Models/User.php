@@ -24,10 +24,8 @@ use Illuminate\Database\Eloquent\Model;
             'Language'
         ];
 
-        /*
-        public function manufacturers()
+        public function habbits()
         {
-            return $this->hasMany(Manufacturer::class);
+            return $this->hasMany(Habbit::class);
         }
-        */
     }
