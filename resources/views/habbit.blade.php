@@ -56,7 +56,7 @@
                 <button class="month-btn">nov</button>
                 <button class="month-btn">dec</button>
             </div>
-
+            
             <form method="POST" action="{{ route('habbits.save', ['sessionUser' => $sessionUser]) }}">
                 @csrf
                 <table>
@@ -88,7 +88,7 @@
                     @endforeach
                 </table>
 
-                <input class="month-btn" type="submit" value="Save">
+                <input class="save-btn" type="submit" value="Save">
             </form>
 
             <div class="create-delete-habbit">

@@ -99,6 +99,38 @@ class HabbitsController extends Controller
             $instanceHabbit = Habbit::where('Habbit_ID', $habbitId)->first();
             $instanceProgress = Progress::where('Progress_ID', $instanceHabbit->Progress_FK)->first();
 
+            $instanceProgress->Day_1 = 0;
+            $instanceProgress->Day_2 = 0;
+            $instanceProgress->Day_3 = 0;
+            $instanceProgress->Day_4 = 0;
+            $instanceProgress->Day_5 = 0;
+            $instanceProgress->Day_6 = 0;
+            $instanceProgress->Day_7 = 0;
+            $instanceProgress->Day_8 = 0;
+            $instanceProgress->Day_9 = 0;
+            $instanceProgress->Day_10 = 0;
+            $instanceProgress->Day_11 = 0;
+            $instanceProgress->Day_12 = 0;
+            $instanceProgress->Day_13 = 0;
+            $instanceProgress->Day_14 = 0;
+            $instanceProgress->Day_15 = 0;
+            $instanceProgress->Day_16 = 0;
+            $instanceProgress->Day_17 = 0;
+            $instanceProgress->Day_18 = 0;
+            $instanceProgress->Day_19 = 0;
+            $instanceProgress->Day_20 = 0;
+            $instanceProgress->Day_21 = 0;
+            $instanceProgress->Day_22 = 0;
+            $instanceProgress->Day_23 = 0;
+            $instanceProgress->Day_24 = 0;
+            $instanceProgress->Day_25 = 0;
+            $instanceProgress->Day_26 = 0;
+            $instanceProgress->Day_27 = 0;
+            $instanceProgress->Day_28 = 0;
+            $instanceProgress->Day_29 = 0;
+            $instanceProgress->Day_30 = 0;
+            $instanceProgress->Day_31 = 0;
+
             foreach ($days as $dayNumber => $checked) 
             {
                 // $dayNumber represents the day number
