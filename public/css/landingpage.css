@@ -325,7 +325,8 @@ td{padding: 3px;}
   font-weight: 600;
 }
 
-#goals{margin-top:150px;}
+#goals{margin-top:150px; margin-bottom: 0px;}
+
 .container2 {
     position: relative;
     padding-left: 25px;
@@ -420,7 +421,7 @@ td{padding: 3px;}
     background-color: rgb(77, 93, 83);
     border:none;
     margin-top: 40px;
-    margin-left: 70px;
+    margin-left: 165px;
     
   }
   
@@ -438,10 +439,9 @@ td{padding: 3px;}
   
 .goals
 {
-    margin-top:30px;
     margin-left:5%;
     width:90%; 
-    height: 150px; 
+    height: 100px; 
     align-items: center;
     justify-content: center;
     display: flex;
