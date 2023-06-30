@@ -21,7 +21,7 @@
                 @if($sessionUser)
                     <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
                     <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
-                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['sessionUser'=> $sessionUser])}}">Habbits</a>
+                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 1, 'sessionUser'=> $sessionUser])}}">Habbits</a>
                     <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'], ['sessionUser'=> $sessionUser])}}">Profile</a>
 
                     <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 
@@ -35,26 +35,39 @@
                 @endif
             </nav>
         </header>
+
         <div class="habbits">
             <h1>habbit tracker</h1>
-            <div class="year">
-                <label for="year-input" class="year-label">Choose a year:</label>
-                <input type="number" value ="2023" id="year-input" name="year" min="2023">
-                <input id="choose" type="submit" value="Choose">
-            </div>
+            
             <div class="months">
-                <button class="month-btn">jan</button>
-                <button class="month-btn">feb</button>
-                <button class="month-btn">mar</button>
-                <button class="month-btn">apr</button>
-                <button class="month-btn">may</button>
-                <button class="month-btn">jun</button>
-                <button class="month-btn">jul</button>
-                <button class="month-btn">aug</button>
-                <button class="month-btn">sep</button>
-                <button class="month-btn">oct</button>
-                <button class="month-btn">nov</button>
-                <button class="month-btn">dec</button>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 1, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">jan</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 2, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">feb</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 3, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">mar</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 4, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">apr</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 5, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">may</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 6, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">jun</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 7, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">jul</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 8, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">aug</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 9, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">sep</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 10, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">oct</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 11, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">nov</button></a>
+                <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 12, 'sessionUser'=> $sessionUser])}}"><button class="month-btn">dec</button></a>
+            </div>
+            <div class="chosen_month">
+                <h4>
+                    @if($month == 1) January @endif
+                    @if($month == 2) February @endif
+                    @if($month == 3) March @endif
+                    @if($month == 4) April @endif
+                    @if($month == 5) May @endif
+                    @if($month == 6) June @endif
+                    @if($month == 7) July @endif
+                    @if($month == 8) August @endif
+                    @if($month == 9) September @endif
+                    @if($month == 10) October @endif
+                    @if($month == 11) November @endif
+                    @if($month == 12) December @endif
+                </h4>
             </div>
             
             <form method="POST" action="{{ route('habbits.save', ['sessionUser' => $sessionUser]) }}">
@@ -87,7 +100,7 @@
                         </tr>
                     @endforeach
                 </table>
-
+                <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
                 <input class="save-btn" type="submit" value="Save">
             </form>
 
@@ -96,6 +109,7 @@
                     @csrf
                     <label for="habbit_input" class="habbit-label">New habbit:</label>
                     <input type="text"  id="habbit_input" name="habbit_input" >
+                    <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
                     <input id="create" type="submit" value="Create">
                 </form>
                 @if($allHabbits->count() > 0)
@@ -108,6 +122,7 @@
                                 <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
                             @endforeach
                         </select>
+                        <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
                         <input id="delete" type="submit" value="Delete">
                     </form>
                 @endif

@@ -42,9 +42,7 @@ class LoginController extends Controller
             $request->session()->put('sessionUser', $instanceUser->Username);
             $sessionUser = session('sessionUser');
 
-            $fullUser = User::where('Username', $sessionUser)->first();
-            $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
-            return view('habbit', compact('sessionUser', 'allHabbits'));
+            return redirect('/' . $sessionUser . '/habbits/1');
         }
 
         $loginFail = "Incorrect password or email!";

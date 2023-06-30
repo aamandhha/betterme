@@ -21,7 +21,7 @@
                 @if($sessionUser)
                     <a href="{{action([App\Http\Controllers\LandingPageController::class, 'index'])}}">About</a>
                     <a href="{{action([App\Http\Controllers\MotivationController::class, 'index'])}}">Motivation</a>
-                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['sessionUser'=> $sessionUser])}}">Habbits</a>
+                    <a href="{{action([App\Http\Controllers\HabbitsController::class, 'index'], ['month' => 1, 'sessionUser'=> $sessionUser])}}">Habbits</a>
                     <a href="{{action([App\Http\Controllers\ProfileController::class, 'index'], ['sessionUser'=> $sessionUser])}}">Profile</a>
 
                     <form action="{{ action([App\Http\Controllers\LogoutController::class, 'store']) }}" 

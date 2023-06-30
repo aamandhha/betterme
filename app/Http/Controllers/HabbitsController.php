@@ -12,12 +12,15 @@ class HabbitsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
-        $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
+        $month = $request->month;
+        $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)
+            ->where('Month', $month)
+            ->get();
 
         $progress = array();
         foreach($allHabbits as $habbit)
@@ -31,7 +34,7 @@ class HabbitsController extends Controller
             $p->Day_29, $p->Day_30, $p->Day_31);
         }
 
-        return view('habbit', compact('sessionUser', 'allHabbits', 'progress'));
+        return view('habbit', compact('sessionUser', 'allHabbits', 'progress', 'month'));
     }
 
     /**
@@ -57,12 +60,12 @@ class HabbitsController extends Controller
         $habbit = new Habbit();
         $habbit->HabbitName = $request->habbit_input;
         $habbit->Year = 2023;
-        $habbit->Month = 6;
+        $habbit->Month = $request->habbit_month;
         $habbit->Owner_FK = $fullUser->User_ID;
         $habbit->Progress_FK = $latestProgress->Progress_ID;
         $habbit->save();
 
-        return redirect('/' . $sessionUser . '/habbit');
+        return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
     }
 
     /**
@@ -171,7 +174,7 @@ class HabbitsController extends Controller
         }
 
         $sessionUser = session('sessionUser');
-        return redirect('/' . $sessionUser . '/habbit');
+        return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
     }
 
     /**
@@ -187,6 +190,6 @@ class HabbitsController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
         $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)->get();
-        return redirect('/' . $sessionUser . '/habbit');
+        return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
     }
 }

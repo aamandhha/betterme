@@ -379,22 +379,24 @@ td{padding: 3px;}
     font-size: 0.8vw;
     background-color: rgb(77, 93, 83);
     border:none;
-    margin-bottom: 30px;
   }
   
   .month-btn:hover {
     background-color: rgba(77, 93, 83, 0.8);
   }
   
-  .year {
-    text-align: center;
-    margin-top: 30px;
+  .chosen_month{
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
   }
-  
-  .year-label {
-    display: block;
-    margin-bottom: 5px;
+  h4{
+    color: rgb(77, 93, 83);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.4vw;
   }
+
   
   input[type="number"] {
     background-color: rgb(133, 144, 137);
@@ -524,7 +526,7 @@ select {
 }
 
 
-#create, #delete, #choose {
+#create, #delete {
     border-radius: 15px;
     text-transform: uppercase;
     color: rgb(240, 240, 234);
