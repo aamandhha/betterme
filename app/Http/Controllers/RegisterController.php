@@ -35,6 +35,7 @@ class RegisterController extends Controller
         $user->Username = $request->username;
         $user->Email = $request->email;
         $user->Password = bcrypt($request->psw);
+        $user->Status = $request->plan;
 
         $existingUsername = User::where('Username', $user->Username)->first();
         if($existingUsername)

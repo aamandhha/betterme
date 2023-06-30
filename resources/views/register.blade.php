@@ -55,6 +55,12 @@
                     <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw_repeat" required>
                     <span class="error"></span><br>
 
+                    <input type="radio" name="plan" value="Basic">
+                    <label for="basic_check" class="container2">Basic</label><br>
+
+                    <input type="radio" name="plan" value="Premium">
+                    <label for="premium_check" class="container2">Premium</label>
+
                     <p>By creating an account you agree to our Terms & Privacy.</p>
                     <div class="btnBox"><button type="submit" class="btn">Register</button></div>
                 </div>

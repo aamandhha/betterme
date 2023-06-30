@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unique('Email');
             $table->string('Password', 60);
             $table->string('Avatar', 255)->default('https://i.postimg.cc/N0cRgFj7/missing-avtr.png');
-            $table->string('Status', 5)->default('User');
+            $table->string('Status', 10)->default('Basic');
             $table->string('Language', 3)->default('ENG');
         });
     }

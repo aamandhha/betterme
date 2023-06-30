@@ -17,6 +17,7 @@ class HabbitsController extends Controller
     {
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
+        $userStatus = $fullUser->Status;
 
         $month = $request->month;
         $allHabbits = Habbit::where('Owner_FK', $fullUser->User_ID)
@@ -53,7 +54,7 @@ class HabbitsController extends Controller
             $p->Day_29, $p->Day_30, $p->Day_31);
         }
 
-        return view('habbit', compact('sessionUser', 'allHabbits', 'progress', 'month', 'goalNames', 'goals'));
+        return view('habbit', compact('sessionUser', 'userStatus', 'allHabbits', 'progress', 'month', 'goalNames', 'goals'));
     }
 
     /**

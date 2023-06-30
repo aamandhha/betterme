@@ -127,25 +127,25 @@
                     </form>
                 @endif
             </div>
-
-            @if($allHabbits->count() > 0)
-                <h2 id="goals">goals</h2>
-                <div class="goals">
-                    <form method="POST" action="{{ route('habbits.goal', ['sessionUser' => $sessionUser]) }}">
-                        @csrf
-                        <label>Choose your habbit and enter days count to create a new goal:</label>
-                        <select name="newGoal">
-                            @foreach ($allHabbits as $habbit)
-                                <option value="{{$habbit->HabbitName}}">{{$habbit->HabbitName}}</option>
-                            @endforeach
-                        </select>
-                        <input type="number" id="dayInput" name="days_end" min="1" max="31" required>
-                        <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
-                        <input id="create" type="submit" value="Create">
-                    </form>
-                </div>
-            @endif
-            
+            @if($userStatus == "Premium")
+                @if($allHabbits->count() > 0)
+                    <h2 id="goals">goals</h2>
+                    <div class="goals">
+                        <form method="POST" action="{{ route('habbits.goal', ['sessionUser' => $sessionUser]) }}">
+                            @csrf
+                            <label>Choose your habbit and enter days count to create a new goal:</label>
+                            <select name="newGoal">
+                                @foreach ($allHabbits as $habbit)
+                                    <option value="{{$habbit->HabbitName}}">{{$habbit->HabbitName}}</option>
+                                @endforeach
+                            </select>
+                            <input type="number" id="dayInput" name="days_end" min="1" max="31" required>
+                            <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
+                            <input id="create" type="submit" value="Create">
+                        </form>
+                    </div>
+                @endif
+                
                 @if(count($goalNames) > 0)
                     @php $g = 0; @endphp
                     @foreach($goalNames as $name)
@@ -156,7 +156,7 @@
                     </div>
                     @endforeach
                 @endif
-            
+            @endif
         </div>
     </body>
 </html>
