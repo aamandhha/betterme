@@ -136,7 +136,7 @@
                         <label>Choose your habbit and enter days count to create a new goal:</label>
                         <select name="newGoal">
                             @foreach ($allHabbits as $habbit)
-                                <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
+                                <option value="{{$habbit->HabbitName}}">{{$habbit->HabbitName}}</option>
                             @endforeach
                         </select>
                         <input type="number" id="dayInput" name="days_end" min="1" max="31" required>
@@ -145,29 +145,18 @@
                     </form>
                 </div>
             @endif
-            <div class="box">
-            <h3 style="padding-right:100px">Water progress:</h3>
-                <div class="skill">
-                    <div class="outer">
-                        <div class="inner">
-                            <div id="number"></div>
-                        </div>
+            
+                @if(count($goalNames) > 0)
+                    @php $g = 0; @endphp
+                    @foreach($goalNames as $name)
+                    <div class="box">
+                        <h3 style="padding-right:30px">{{$name}} progress:</h3>
+                        <p>{{$goals[$g]->DaysNow}} / {{$goals[$g]->DaysEnd}}</p>
+                        @php $g++; @endphp
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                            <defs>
-                                <linearGradient id="GradientColor">
-                                <stop offset="0%" stop-color="rgb(99, 112, 104)" />
-                                <stop offset="100%" stop-color="rgb(99, 112, 104)" />
-                                </linearGradient>
-                            </defs>
-                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
-                    </svg>
-                
-                </div>
-                <p style="padding-left:100px;">20 / 31</p>
-            </div>
-            <script> let number = document.getElementById("number"); let counter = 0; setInterval(()=>{if(counter==65){clearInterval();} else{counter+=1; number.innerHTML = counter + "%"}},30)</script>
+                    @endforeach
+                @endif
+            
         </div>
-        <footer> <p class="footer">Amanda Pāne 2023</p></footer>
     </body>
 </html>

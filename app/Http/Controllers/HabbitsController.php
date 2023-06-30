@@ -23,6 +23,24 @@ class HabbitsController extends Controller
             ->where('Month', $month)
             ->get();
 
+        $habbitsWithGoals = Habbit::where('Owner_FK', $fullUser->User_ID)
+            ->where('Month', $month)
+            ->whereNotNull('Goal_FK')
+            ->get();
+
+        $goalNames = array();
+        foreach($habbitsWithGoals as $goalHabbit)
+        {
+            array_push($goalNames, $goalHabbit->HabbitName);
+        }
+
+        $goals = array();
+        foreach($habbitsWithGoals as $goalHabbit)
+        {
+            $goal = Goals::where('Goal_ID', $goalHabbit->Goal_FK)->first();
+            array_push($goals, $goal);
+        }
+
         $progress = array();
         foreach($allHabbits as $habbit)
         {
@@ -35,7 +53,7 @@ class HabbitsController extends Controller
             $p->Day_29, $p->Day_30, $p->Day_31);
         }
 
-        return view('habbit', compact('sessionUser', 'allHabbits', 'progress', 'month'));
+        return view('habbit', compact('sessionUser', 'allHabbits', 'progress', 'month', 'goalNames', 'goals'));
     }
 
     /**
@@ -175,6 +193,37 @@ class HabbitsController extends Controller
         }
 
         $sessionUser = session('sessionUser');
+        $fullUser = User::where('Username', $sessionUser)->first();
+
+        $habbitsWithGoals = Habbit::where('Owner_FK', $fullUser->User_ID)
+            ->where('Month', $request->habbit_month)
+            ->whereNotNull('Goal_FK')
+            ->get();
+
+        foreach($habbitsWithGoals as $habbit)
+        {
+
+            $p = Progress::where('Progress_ID', $habbit->Progress_FK)->first();
+
+            $progress = array();
+            array_push($progress, $p->Day_1, $p->Day_2, $p->Day_3, $p->Day_4,
+            $p->Day_5, $p->Day_6, $p->Day_7, $p->Day_8, $p->Day_9, $p->Day_10,
+            $p->Day_11, $p->Day_12, $p->Day_13, $p->Day_14, $p->Day_15, $p->Day_16,
+            $p->Day_17, $p->Day_18, $p->Day_19, $p->Day_20, $p->Day_21, $p->Day_22,
+            $p->Day_23, $p->Day_24, $p->Day_25, $p->Day_26, $p->Day_27, $p->Day_28,
+            $p->Day_29, $p->Day_30, $p->Day_31);
+
+            $count = 0;
+            foreach($progress as $status)
+            {
+                if($status == 1) $count++;
+            }
+
+            $targetGoal = Goals::where('Goal_ID', $habbit->Goal_FK)->first();
+            $targetGoal->DaysNow = $count;
+            $targetGoal->save();
+        }
+
         return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
     }
 
@@ -183,8 +232,6 @@ class HabbitsController extends Controller
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
-        $request->newGoal;
-
         $goal = new Goals();
         $goal->DaysNow = 0;
         $goal->DaysEnd = $request->days_end;
@@ -192,7 +239,9 @@ class HabbitsController extends Controller
 
         $latestGoal = Goals::latest('Goal_ID')->first();
         $targetHabbit = Habbit::where('Owner_FK', $fullUser->User_ID)
-            ->where('Month', $request->habbit_month)->first();
+            ->where('Month', $request->habbit_month)
+            ->where('HabbitName', $request->newGoal)
+            ->first();
 
         $targetHabbit->Goal_FK = $latestGoal->Goal_ID;
         $targetHabbit->save();
