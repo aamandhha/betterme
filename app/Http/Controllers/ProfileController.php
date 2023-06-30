@@ -12,9 +12,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        /*Izveido mainīgo sessionUser, lai būtu iespējams saglabāt lietotāja username, kas ir pieteicies
+        un mainīgo fullUser, lai caur sessionUser objektu būtu iespēja piekļūt pārējiem lietotāja datiem*/
         $sessionUser = session('sessionUser');
         $fullUser = User::where('Username', $sessionUser)->first();
 
+        /*padod uz profile skatu abus izveidotos mainīgos, lai ar tiem būtu iespēja darboties*/
         return view('profile', compact('sessionUser', 'fullUser'));
     }
 

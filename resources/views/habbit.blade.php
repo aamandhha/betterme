@@ -74,20 +74,26 @@
                 @csrf
                 <table>
                     <tr>
+                        <!--Izveido dienu numuru rindu-->
                         <th></th>
                         @for($i = 1; $i <= 31; $i++)
                             <th>{{$i}}</th>
                         @endfor
                     </tr>
+                    
                     @php $p = 0; @endphp
+                    <!--Paņem pa vienam habbit objektam no visu habbitu saraksta-->
                     @foreach ($allHabbits as $habbit)
                         <tr>
+                            <!--Ievieto checkbox rindu sākumos habbitu nosaukumus-->
                             <th>{{$habbit->HabbitName}}</th>
 
                             @for($j = 1; $j <= 31; $j++)
                                 <td>
                                     <label class="container2">
                                         @if($progress[$p] == 1) 
+                                            <!--Ja datu bāzē uzrādās, ka attiecīgajam habbit, attiecīgajā dienā 1 (kā iepriekš atķeksēts
+                                                tad atsvaidzinot lapu, attiecīgais checkbox saglabāsies iezīmēts-->
                                             <input type="checkbox" name="habbit_check[{{$habbit->Habbit_ID}}][{{$j}}]" checked>
                                         @else
                                             <input type="checkbox" name="habbit_check[{{$habbit->Habbit_ID}}][{{$j}}]">
@@ -112,12 +118,14 @@
                     <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
                     <input id="create" type="submit" value="Create">
                 </form>
+                <!--Uzrāda habbit dzēšanas iespēju, ja ir vismaz viens habbit-->
                 @if($allHabbits->count() > 0)
                     <form method="POST" action="{{ route('habbits.destroy', ['sessionUser' => $sessionUser, 'habbit' => $habbit->Habbit_ID]) }}">
                         @csrf
                         @method('DELETE')
                         <label for="habbit_del" class="habbit-label">Choose a habbit to delete:</label>
                         <select name="delHabbit">
+                            <!--Aizpilda dropdown ar lietotāja pievienotajiem habbitiem-->
                             @foreach ($allHabbits as $habbit)
                                 <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
                             @endforeach
@@ -127,6 +135,7 @@
                     </form>
                 @endif
             </div>
+            <!-- ja lietotājam ir premium statuss, tad tiks uzrādīta iespēja izveidot mērķus, ja habbit skaits lielāks par nulli-->
             @if($userStatus == "Premium")
                 @if($allHabbits->count() > 0)
                     <h2 id="goals">goals</h2>
@@ -135,6 +144,7 @@
                             @csrf
                             <label>Choose your habbit and enter days count to create a new goal:</label>
                             <select name="newGoal">
+                                 <!--Aizpilda dropdown ar lietotāja pievienotajiem habbitiem-->
                                 @foreach ($allHabbits as $habbit)
                                     <option value="{{$habbit->HabbitName}}">{{$habbit->HabbitName}}</option>
                                 @endforeach
@@ -145,9 +155,10 @@
                         </form>
                     </div>
                 @endif
-                
+                 <!--Ja lietotājam ir izveidots vismaz viens mērķis, tad tiks uzrādīts attiecīgo mērķu progress-->
                 @if(count($goalNames) > 0)
                     @php $g = 0; @endphp
+                     <!--Paņem lietotāja mērķi ar habbit nosaukumu un uzrāda cik dienas ir atzīmētas un mērķa dienu skaitu-->
                     @foreach($goalNames as $name)
                     <div class="box">
                         <h3 style="padding-right:30px">{{$name}} progress:</h3>
