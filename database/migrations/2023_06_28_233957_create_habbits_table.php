@@ -22,6 +22,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('Progress_FK');
             $table->foreign('Progress_FK')->references('Progress_ID')->on('progress');
+
+            $table->unsignedBigInteger('Goal_FK')->nullable();;
+            $table->foreign('Goal_FK')->references('Goal_ID')->on('goals')->nullOnDelete();;
         });
     }
 

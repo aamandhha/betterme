@@ -19,7 +19,8 @@ use Illuminate\Database\Eloquent\Model;
             'Year',
             'Month',
             'Owner_FK',
-            'Progress_FK'
+            'Progress_FK',
+            'Goal_FK'
         ];
 
         public function progress()

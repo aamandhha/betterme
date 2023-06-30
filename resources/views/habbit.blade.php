@@ -108,7 +108,7 @@
                 <form method="POST" action="{{ action([App\Http\Controllers\HabbitsController::class, 'store']) }}">
                     @csrf
                     <label for="habbit_input" class="habbit-label">New habbit:</label>
-                    <input type="text"  id="habbit_input" name="habbit_input" >
+                    <input type="text"  id="habbit_input" name="habbit_input" required>
                     <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
                     <input id="create" type="submit" value="Create">
                 </form>
@@ -128,20 +128,23 @@
                 @endif
             </div>
 
-            <h2 id="goals">goals</h2>
-            <div class="goals">
-                <form action="">
-                    <label>Choose your habbit and enter days count to create a new goal:</label>
-                    <select>
-                        <option value="">--</option>
-                        <option value="Water">Water</option>
-                        <option value="Workout">Workout</option>
-                        <option value="Walk">Walk</option>
-                    </select>
-                    <input type="number" id="dayInput" min="1" max="31">
-                    <input id="create" type="submit" value="Create">
-                </form>
-            </div>
+            @if($allHabbits->count() > 0)
+                <h2 id="goals">goals</h2>
+                <div class="goals">
+                    <form method="POST" action="{{ route('habbits.goal', ['sessionUser' => $sessionUser]) }}">
+                        @csrf
+                        <label>Choose your habbit and enter days count to create a new goal:</label>
+                        <select name="newGoal">
+                            @foreach ($allHabbits as $habbit)
+                                <option value="{{$habbit->Habbit_ID}}">{{$habbit->HabbitName}}</option>
+                            @endforeach
+                        </select>
+                        <input type="number" id="dayInput" name="days_end" min="1" max="31" required>
+                        <input type="hidden" id="habbit_month" name="habbit_month" value="{{ $month }}">
+                        <input id="create" type="submit" value="Create">
+                    </form>
+                </div>
+            @endif
             <div class="box">
             <h3 style="padding-right:100px">Water progress:</h3>
                 <div class="skill">

@@ -36,6 +36,7 @@ Route::resource('habbits', HabbitsController::class, ['except' => ['index', 'des
 Route::get('{sessionUser}/habbits/{month}', [HabbitsController::class, 'index'])->name('habbits.index');
 Route::delete('{sessionUser}/habbits/{habbit}', [HabbitsController::class, 'destroy'])->name('habbits.destroy');
 Route::post('{sessionUser}/habbits/save', [HabbitsController::class, 'save'])->name('habbits.save');
+Route::post('{sessionUser}/habbits/goal', [HabbitsController::class, 'goal'])->name('habbits.goal');
 
 Route::resource('profile', ProfileController::class, ['except' => ['index']]);
 Route::get('{sessionUser}/profile', [ProfileController::class,'index']);

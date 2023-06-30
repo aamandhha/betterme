@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Progress;
 use App\Models\Habbit;
+use App\Models\Goals;
 
 class HabbitsController extends Controller
 {
@@ -174,6 +175,28 @@ class HabbitsController extends Controller
         }
 
         $sessionUser = session('sessionUser');
+        return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
+    }
+
+    public function goal(Request $request)
+    {
+        $sessionUser = session('sessionUser');
+        $fullUser = User::where('Username', $sessionUser)->first();
+
+        $request->newGoal;
+
+        $goal = new Goals();
+        $goal->DaysNow = 0;
+        $goal->DaysEnd = $request->days_end;
+        $goal->save();
+
+        $latestGoal = Goals::latest('Goal_ID')->first();
+        $targetHabbit = Habbit::where('Owner_FK', $fullUser->User_ID)
+            ->where('Month', $request->habbit_month)->first();
+
+        $targetHabbit->Goal_FK = $latestGoal->Goal_ID;
+        $targetHabbit->save();
+
         return redirect('/' . $sessionUser . '/habbits' . '/' . $request->habbit_month);
     }
 
